@@ -74,8 +74,9 @@ nav ul li a:hover {
 .page {
   z-index: 100;
 }
-#bg-video {
-  position: fixed;
+
+#bg-image {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -102,8 +103,8 @@ nav ul li a:hover {
   flex-direction: column;
   justify-content: center;
   padding-top: 20px;
-  left: 15vw;
-  width: 85vw;
+  left: 20vw;
+  width: 80vw;
   height: calc(100vh - 150px);
   overflow-y: auto;
   overflow-x: hidden;
@@ -125,30 +126,42 @@ nav ul li a:hover {
 .main::-webkit-scrollbar-thumb:hover {
   background: rgb(51, 35, 69);
 }
+
 .sidebar {
-  width: 15vw;
-  color: white;
-  height: 100vh;
-  position: fixed;
+  width: 20vw;
+  background-color: transparent;
+  height: calc(100vh - 150px);
+  color: #ffffff;
   top: 80px;
   left: 0;
-  height: calc(100vh - 150px);
   padding: 20px;
+  overflow-y: auto;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  position: fixed;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-
-.sidebar-header {
-  margin-bottom: 20px;
-  text-align: center;
+.sidebar::-webkit-scrollbar {
+  width: 10px;
 }
 
-.sidebar-header h2 {
-  margin: 0;
-  font-size: 1.5em;
+.sidebar::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border: 2px solid #b2b2b2;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #616161;
+}
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #838383 #bebebe;
 }
 
 .sidebar-section {
@@ -156,34 +169,146 @@ nav ul li a:hover {
 }
 
 .sidebar-section h2 {
+  font-size: 18px;
   margin-bottom: 10px;
-  font-size: 1.5em;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 5px;
 }
 
-.sidebar-menu {
+.sidebar-queue {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
-
-.sidebar-menu li {
-  margin: 15px 0;
-}
-
-.sidebar-menu li a {
-  text-decoration: none;
-  color: white;
-  font-size: 15px;
+.mycontrols {
+  padding-top: 20px;
   display: flex;
   align-items: center;
 }
+.mycontrols button{
+    background-color:rgb(128, 62, 208);
+    border:2px solid rgb(104, 7, 224);
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    width: 90px;
+    height: 50px;
+  }
+.mycontrols i ,
+.mycontrols button i {
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+}
 
-.sidebar-menu li a i {
+.moreoptions {
+  position: relative;
+}
+
+.moreoptions i {
+  cursor: pointer;
+  padding: 20px;
+}
+#song-section {
+  margin-bottom: 30px;
+}
+
+.song-detail {
+  display: flex;
+}
+
+.song-image {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.songinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.songinfo h2{
+    position: relative;
+    left: -35px;
+}
+
+.songinfo p {
+  margin: 5px 0;
+  align-self: flex-start;
+  color: #e1e1e1;
+}
+
+.songlyrics {
+  margin-top: 20px;
+  width: 500px;
+  position: relative;
+  left: -70px;
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.songlyrics:hover {
+  max-height: none;
+}
+
+.songlyrics h2 {
+  color: #e1e1e1;
+  margin-left: 50px;
+  padding-bottom: 10px;
+}
+
+pre {
+  line-height: 1.6;
+  color: #e1e1e1;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #876060;
+  border-radius: 10px;
+}
+
+.queue-poster {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
   margin-right: 10px;
 }
 
-.sidebar-menu li a:hover {
+.queue-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.queue-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.queue-artist {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.queue-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.queue-controls i {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.queue-controls i:hover {
   color: #a47bfe;
 }
 
@@ -352,8 +477,8 @@ section h2 {
 .song-tracker::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 4px; 
-  height: 4px; 
+  width: 4px;
+  height: 4px;
   background: grey;
   cursor: pointer;
   border-radius: 50%;
@@ -361,8 +486,8 @@ section h2 {
 }
 
 .song-tracker::-moz-range-thumb {
-  width: 4px; 
-  height: 4px; 
+  width: 4px;
+  height: 4px;
   background: grey;
   cursor: pointer;
   border-radius: 50%;
@@ -371,7 +496,7 @@ section h2 {
 
 .song-tracker::-ms-thumb {
   width: 4px;
-  height: 4px; 
+  height: 4px;
   background: grey;
   cursor: pointer;
   border-radius: 50%;
@@ -396,7 +521,7 @@ section h2 {
 .extra-icons {
   display: flex;
   align-items: center;
-  padding: 10px  ;
+  padding: 10px;
 }
 
 .song-poster {
