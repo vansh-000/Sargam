@@ -66,6 +66,66 @@ nav ul li a:hover {
   color: #f45370;
 }
 
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out; 
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    padding: 15px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .menu-toggle:checked + .hamburger + #nav-menu {
+    display: block;
+  }
+
+  #nav-menu a {
+    display: block;
+    width: 100%;
+  }
+
+  #nav-menu a:active + .menu-toggle, 
+  #nav-menu a:focus + .menu-toggle {
+    display: none;
+  }
+
+  #nav-menu a:active ~ #menu-toggle, 
+  #nav-menu a:focus ~ #menu-toggle {
+    display: none;
+  }
+}
+
 .page3 {
   overflow: hidden;
   width: 100vw;
@@ -84,11 +144,13 @@ nav ul li a:hover {
   object-fit: cover;
   z-index: -1;
 }
+
 .hmm {
   display: flex;
   flex-direction: row;
   overflow-x: hidden;
 }
+
 .mainbody {
   position: relative;
   display: flex;
@@ -97,6 +159,7 @@ nav ul li a:hover {
   overflow-y: hidden;
   height: calc(100vh - 80px);
 }
+
 .main {
   display: block;
   position: relative;
@@ -109,6 +172,7 @@ nav ul li a:hover {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 .main::-webkit-scrollbar {
   width: 10px;
 }
@@ -143,6 +207,7 @@ nav ul li a:hover {
   flex-direction: column;
   justify-content: space-around;
 }
+
 .sidebar::-webkit-scrollbar {
   width: 10px;
 }
@@ -159,6 +224,7 @@ nav ul li a:hover {
 .sidebar::-webkit-scrollbar-thumb:hover {
   background: #616161;
 }
+
 .sidebar {
   scrollbar-width: thin;
   scrollbar-color: #838383 #bebebe;
@@ -178,21 +244,24 @@ nav ul li a:hover {
   padding: 0;
   margin: 0;
 }
+
 .mycontrols {
   padding-top: 20px;
   display: flex;
   align-items: center;
 }
-.mycontrols button{
-    background-color:rgb(128, 62, 208);
-    border:2px solid rgb(104, 7, 224);
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    width: 90px;
-    height: 50px;
-  }
-.mycontrols i ,
+
+.mycontrols button {
+  background-color: rgb(128, 62, 208);
+  border: 2px solid rgb(104, 7, 224);
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 90px;
+  height: 50px;
+}
+
+.mycontrols i,
 .mycontrols button i {
   padding: 15px;
   color: white;
@@ -207,8 +276,10 @@ nav ul li a:hover {
   cursor: pointer;
   padding: 20px;
 }
+
 #song-section {
   margin-bottom: 30px;
+  left: 0;
 }
 
 .song-detail {
@@ -228,9 +299,9 @@ nav ul li a:hover {
   justify-content: flex-start;
 }
 
-.songinfo h2{
-    position: relative;
-    left: -35px;
+.songinfo h2 {
+  position: relative;
+  left: -35px;
 }
 
 .songinfo p {
@@ -262,15 +333,16 @@ pre {
   line-height: 1.6;
   color: #e1e1e1;
 }
-
 .queue-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 10px;
+  height: 70px;
   background-color: #876060;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .queue-poster {
@@ -278,6 +350,7 @@ pre {
   height: 50px;
   border-radius: 5px;
   margin-right: 10px;
+  flex-shrink: 0;
 }
 
 .queue-info {
@@ -285,22 +358,30 @@ pre {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
 }
 
 .queue-title {
   font-size: 14px;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .queue-artist {
   font-size: 12px;
   color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .queue-controls {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .queue-controls i {
@@ -310,6 +391,27 @@ pre {
 
 .queue-controls i:hover {
   color: #a47bfe;
+}
+
+@media (max-width: 768px) {
+  .queue-item {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .queue-poster {
+    margin-bottom: 10px;
+  }
+
+  .queue-info {
+    width: 100%;
+  }
+
+  .queue-title,
+  .queue-artist {
+    white-space: normal;
+  }
 }
 
 .artist {
@@ -434,22 +536,6 @@ section h2 {
 
 .bottom {
   width: 100vw;
-  height: 100px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
-
-.bottom {
-  width: 100vw;
   height: 70px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   position: fixed;
@@ -554,4 +640,55 @@ section h2 {
 
 .control-btn:hover {
   color: #a47bfe;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    left: 0;
+    width: 100vw;
+  }
+
+  .song-detail {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .song-image {
+    width: 100%;
+    height: auto;
+    margin: 0 0 20px 0;
+  }
+
+  .songinfo {
+    align-items: center;
+    text-align: center;
+  }
+
+  .songinfo h2 {
+    left: 0;
+  }
+
+  .songlyrics {
+    width: 100%;
+    position: relative;
+    left: 0;
+  }
+
+  pre {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    word-wrap:initial;
+    white-space:inherit;
+  }
+
+  .main h2 {
+    padding: 0;
+    margin: 2px;
+  }
 }
