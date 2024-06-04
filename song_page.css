@@ -88,9 +88,9 @@ nav ul li a:hover {
     width: 100%;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
   }
 
   nav ul {
@@ -115,12 +115,12 @@ nav ul li a:hover {
     width: 100%;
   }
 
-  #nav-menu a:active + .menu-toggle, 
+  #nav-menu a:active + .menu-toggle,
   #nav-menu a:focus + .menu-toggle {
     display: none;
   }
 
-  #nav-menu a:active ~ #menu-toggle, 
+  #nav-menu a:active ~ #menu-toggle,
   #nav-menu a:focus ~ #menu-toggle {
     display: none;
   }
@@ -683,12 +683,59 @@ section h2 {
     padding: 0;
     margin: 0;
     left: 0;
-    word-wrap:initial;
-    white-space:inherit;
+    word-wrap: initial;
+    white-space: inherit;
   }
 
   .main h2 {
     padding: 0;
     margin: 2px;
+  }
+
+  .download-btn,
+  .reverse-btn,
+  .forward-btn,
+  .like-btn {
+    display: none;
+  }
+
+  .controls {
+    right: 0;
+    align-items: end;
+    justify-content: flex-end;
+  }
+
+  .song-title,
+  .song-artist {
+    width: 100%;
+  }
+
+  .song-title {
+    font-size: 14px;
+  }
+
+  .song-artist {
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .music-player {
+    padding: 5px;
+  }
+
+  .play-pause-btn {
+    padding: 10px;
+    right: 0;
+  }
+
+  .song-poster {
+    width: 40px;
+    height: 40px;
+  }
+
+  .control-btn {
+    font-size: 16px;
   }
 }

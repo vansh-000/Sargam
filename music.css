@@ -1,4 +1,3 @@
-/* General reset and body styles */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +12,6 @@ body {
   overflow: hidden;
 }
 
-/* Header styles */
 header {
   display: flex;
   top: 0px;
@@ -68,7 +66,6 @@ nav ul li a:hover {
   color: #f45370;
 }
 
-/* Menu toggle styles */
 .menu-toggle {
   display: none;
 }
@@ -91,9 +88,9 @@ nav ul li a:hover {
     width: 100%;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
   }
 
   nav ul {
@@ -118,12 +115,12 @@ nav ul li a:hover {
     width: 100%;
   }
 
-  #nav-menu a:active + .menu-toggle, 
+  #nav-menu a:active + .menu-toggle,
   #nav-menu a:focus + .menu-toggle {
     display: none;
   }
 
-  #nav-menu a:active ~ #menu-toggle, 
+  #nav-menu a:active ~ #menu-toggle,
   #nav-menu a:focus ~ #menu-toggle {
     display: none;
   }
@@ -292,6 +289,7 @@ nav ul li a:hover {
   display: inline-block;
   color: #fff;
   text-align: center;
+  position: relative;
 }
 
 .glass-card img {
@@ -306,7 +304,102 @@ nav ul li a:hover {
   padding: 10px;
 }
 
-.glass-card button {
+.glass-card .description {
+  display: none;
+  max-width: 174px;
+  margin: 10px auto;
+  color: #ddd;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.glass-card .toggle {
+  display: none;
+}
+
+.glass-card .show-more,
+.glass-card .show-less {
+  color: #f45370;
+  cursor: pointer;
+  display: block;
+  margin: 10px 0;
+}
+
+.glass-card .show-less {
+  display: none;
+}
+
+.glass-card .toggle:checked ~ .description {
+  display: block;
+}
+
+.glass-card .toggle:checked ~ .show-more {
+  display: none;
+}
+
+.glass-card .toggle:checked ~ .show-less {
+  display: block;
+}
+
+.button {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.play-button {
+  background-color: #007bff;
+}
+
+.play-button:hover {
+  background-color: #0056b3;
+}
+
+.play-toggle {
+  display: none;
+}
+
+.play-toggle:checked + .play-button {
+  background-color: #28a745;
+}
+
+.play-toggle:checked + .play-button::after {
+  content: "Added to queue";
+}
+
+.play-toggle:not(:checked) + .play-button::after {
+  content: "Start Listening";
+}
+
+.playlist-button {
+  background-color: #007bff;
+}
+
+.playlist-button:hover {
+  background-color: #0056b3;
+}
+
+.playlist-toggle {
+  display: none;
+}
+
+.playlist-toggle:checked + .playlist-button {
+  background-color: #17a2b8;
+}
+
+.playlist-toggle:checked + .playlist-button::after {
+  content: "Added";
+}
+
+.playlist-toggle:not(:checked) + .playlist-button::after {
+  content: "Add to Playlist";
+}
+.follow-button {
   padding: 10px;
   border: none;
   border-radius: 20px;
@@ -314,10 +407,28 @@ nav ul li a:hover {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
+  display: block;
+  margin: 10px 0;
 }
 
-.glass-card button:hover {
+.follow-button:hover {
   background-color: #d93d5c;
+}
+
+.follow-toggle {
+  display: none;
+}
+
+.follow-toggle:checked + .follow-button {
+  background-color: #28a745;
+}
+
+.follow-toggle:checked + .follow-button::after {
+  content: "Following";
+}
+
+.follow-toggle:not(:checked) + .follow-button::after {
+  content: "Follow";
 }
 
 .main-nav {
@@ -411,8 +522,8 @@ section h2 {
 .song-tracker::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 4px; 
-  height: 4px; 
+  width: 4px;
+  height: 4px;
   background: grey;
   cursor: pointer;
   border-radius: 50%;
@@ -420,8 +531,8 @@ section h2 {
 }
 
 .song-tracker::-moz-range-thumb {
-  width: 4px; 
-  height: 4px; 
+  width: 4px;
+  height: 4px;
   background: grey;
   cursor: pointer;
   border-radius: 50%;
@@ -430,7 +541,7 @@ section h2 {
 
 .song-tracker::-ms-thumb {
   width: 4px;
-  height: 4px; 
+  height: 4px;
   background: grey;
   cursor: pointer;
   border-radius: 50%;
@@ -499,5 +610,52 @@ section h2 {
     left: 0;
     width: 100vw;
   }
+  
+  .download-btn,
+  .reverse-btn,
+  .forward-btn,
+  .like-btn {
+    display: none;
+  }
 
+  .controls{
+    right: 0;
+    align-items: end;
+    justify-content: flex-end;
+  }
+  
+  .song-title,
+  .song-artist {
+    width: 100%;
+  }
+  
+  .song-title {
+    font-size: 14px;
+  }
+  
+  .song-artist {
+    font-size: 10px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .music-player {
+    padding: 5px;
+  }
+  
+  .play-pause-btn {
+    padding: 10px;
+    right: 0;
+  }
+  
+  .song-poster {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .control-btn {
+    font-size: 16px;
+  }
+  
 }
